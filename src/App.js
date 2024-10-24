@@ -1,11 +1,17 @@
-import React from "react";
+import React, { createContext, useEffect } from "react";
 import CameraTable from "./components/camera/CameraTable";
 import "./App.css";
+
 const App = () => {
+  const CameraContext = createContext(null);
+  useEffect(() => {
+    fetchCameraData();
+  }, []);
+
   return (
-    <div>
+    <CameraContext.Provider value={{}}>
       <CameraTable />
-    </div>
+    </CameraContext.Provider>
   );
 };
 

@@ -1,18 +1,19 @@
-/* wobot logo */
+/* wobot.ai logo */
 .logo {
     display: flex;
     justify-content: center;
-    height: 10vh;
+    height: 8vh;
 }
 
-.left {
+
+.search_container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 /* Input with search icon */
-.left input {
+.search_container input {
     padding: 8px 30px 8px 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -21,6 +22,11 @@
     outline: none;
 }
 
+.search_input {
+    position: relative;
+}
+
+/* search filter */
 .search-icon-button {
     position: absolute;
     right: 10px;
@@ -32,11 +38,12 @@
     padding: 0;
 }
 
-.search-icon-button .fa-search {
+/* search filter  icon*/
+.fa-search {
     font-size: 16px;
     color: #ccc;
 }
 
-.search-icon-button:hover .fa-search {
+.fa-search:hover {
     color: #000;
 }
