@@ -47,3 +47,16 @@
 .fa-search:hover {
     color: #000;
 }
+
+
+/* pagination */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+
+}
+
+.pagination div {
+    cursor: pointer;
+}

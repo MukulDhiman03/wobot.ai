@@ -1,38 +1,35 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { CameraContext } from "../../App";
+import TableRow from "./TableRow";
 
 const Table = () => {
-  const data = [
-    {
-      id: 1,
-      name: "cam1",
-      health: "ok ok",
-      location: "New York Recorder",
-      recorder: "New York Recorder",
-      taks: "3 Tasks",
-      status: "Active",
-      Actions: "Disabled",
-    },
-    {
-      id: 2,
-      name: "cam1",
-      health: "ok ok",
-      location: "New York Recorder",
-      recorder: "New York Recorder",
-      taks: "3 Tasks",
-      status: "Active",
-      Actions: "Disabled",
-    },
-    {
-      id: 3,
-      name: "cam1",
-      health: "ok ok",
-      location: "New York Recorder",
-      recorder: "New York Recorder",
-      taks: "3 Tasks",
-      status: "Active",
-      Actions: "Disabled",
-    },
-  ];
+  const { cameraData } = useContext(CameraContext);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(cameraData.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = cameraData.slice(startIndex, endIndex);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+    setIsDropdownOpen(false);
+  };
+
   return (
     <div style={{ marginTop: "10px" }}>
       <div>
@@ -107,37 +104,31 @@ const Table = () => {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {data.map((item) => (
-                <tr key={item.id}>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    <input type="checkbox" />
-                  </td>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    {item.name}
-                  </td>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    {item.health}
-                  </td>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    {item.location}
-                  </td>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    {item.recorder}
-                  </td>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    {item.taks}
-                  </td>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    {item.status}
-                  </td>
-                  <td style={{ padding: "10px", textAlign: "left" }}>
-                    {item.Actions}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            {currentItems.map((cam) => (
+              <tbody key={cam.id}>
+                <TableRow cam={cam} />
+              </tbody>
+            ))}
           </table>
+          <div className="pagination">
+            <div>^ {totalPages}</div>
+            <p>
+              {startIndex + 1}-{Math.min(endIndex, cameraData.length)} of{" "}
+              {cameraData.length}
+            </p>
+            <div onClick={handlePrevPage} style={{ cursor: "pointer" }}>
+              {"<<"}
+            </div>
+            <div onClick={handlePrevPage} style={{ cursor: "pointer" }}>
+              {"<"}
+            </div>
+            <div onClick={handleNextPage} style={{ cursor: "pointer" }}>
+              {">"}
+            </div>
+            <div onClick={handleNextPage} style={{ cursor: "pointer" }}>
+              {">>"}
+            </div>
+          </div>
         </div>
       </div>
     </div>
