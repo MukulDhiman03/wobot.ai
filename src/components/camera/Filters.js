@@ -16,7 +16,7 @@ const LocationInputWithDropdown = () => {
 
   const { cameraData, setCameraData, filteredData, setFilteredData } =
     useContext(CameraContext);
-  console.log(cameraData);
+  // console.log(cameraData);
 
   const handleCurrentLocation = (location) => {
     const filterData = cameraData.filter(
