@@ -4,26 +4,34 @@ import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
+import { CameraContext } from "../../App";
 
 const TableRow = ({ cam }) => {
   const token = "4ApVMIn5sTxeW7GQ5VWeWiy";
-  const { cameraData } = useContext(CameraContext);
+  const { cameraData, setCameraData } = useContext(CameraContext);
 
   const statusHandler = async (status, id) => {
-    const res = await axios.put(
-      BASE_URL + "/update/camera/status",
-      {
-        id: id,
-        status: status,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    try {
+      const res = await axios.put(
+        BASE_URL + "/update/camera/status",
+        {
+          id: id,
+          status: status,
         },
-      }
-    );
-    console.log(status, id);
-    console.log(res);
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setCameraData((prevData) =>
+        prevData.map((cam) =>
+          cam.id === id ? { ...cam, status: res.data.data.status } : cam
+        )
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <tr>
@@ -35,15 +43,45 @@ const TableRow = ({ cam }) => {
           {cam?.current_status === "Online" ? <span>🟢</span> : <span>🔴</span>}
           <span>{cam?.name}</span>
         </div>
-        <span style={{ color: "gray", fontSize: "10px" }}>
+        {/* <span style={{ color: "gray", fontSize: "10px" }}>
           sherwinwilliams@wobot.ai
+        </span> */}
+      </td>
+      <td
+        style={{
+          display: "flex",
+          gap: "20px",
+        }}
+      >
+        <span>
+          <span>☁️</span>
+          <span
+            style={{
+              border: "2px solid red",
+              padding: "5px",
+              borderRadius: "30px",
+            }}
+          >
+            {cam?.health?.device}
+          </span>
+        </span>
+        <span>
+          <span>🏢</span>
+          <span
+            style={{
+              border: "2px solid orange",
+              padding: "5px",
+              borderRadius: "50px",
+            }}
+          >
+            {cam?.health?.cloud}
+          </span>
         </span>
       </td>
-      <td style={{ padding: "10px", textAlign: "left" }}>
-        {cam?.health?.device}
-      </td>
       <td style={{ padding: "10px", textAlign: "left" }}>{cam?.location}</td>
-      <td style={{ padding: "10px", textAlign: "left" }}>{cam?.recorder}</td>
+      <td style={{ padding: "10px", textAlign: "left" }}>
+        {cam.recorder ? cam.recorder : "N/A"}
+      </td>
       <td style={{ padding: "10px", textAlign: "left" }}>{cam?.tasks}</td>
       <td style={{ padding: "10px", textAlign: "left" }}>
         <div

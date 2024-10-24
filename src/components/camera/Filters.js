@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
@@ -11,15 +11,16 @@ const LocationInputWithDropdown = () => {
 
   const locations = ["New York", "Los Angeles", "Chicago", "San Francisco"];
   const statuses = ["Active", "Inactive", "Pending", "Completed"];
+  const { cameraData, setCameraData } = useContext(createContext);
 
   const toggleLocationDropdown = () => {
     setLocationDropdownOpen(!isLocationDropdownOpen);
-    setStatusDropdownOpen(false); 
+    setStatusDropdownOpen(false);
   };
 
   const toggleStatusDropdown = () => {
     setStatusDropdownOpen(!isStatusDropdownOpen);
-    setLocationDropdownOpen(false); 
+    setLocationDropdownOpen(false);
   };
 
   return (
@@ -46,9 +47,9 @@ const LocationInputWithDropdown = () => {
             top: "50%",
             transform: "translateY(-50%)",
             color: "#888",
-            cursor: "pointer", 
+            cursor: "pointer",
           }}
-          onClick={toggleLocationDropdown} 
+          onClick={toggleLocationDropdown}
         />
         {/* Location input field */}
         <input
@@ -87,7 +88,7 @@ const LocationInputWithDropdown = () => {
                 }}
                 onClick={() => {
                   alert(`You selected: ${location}`);
-                  setLocationDropdownOpen(false); 
+                  setLocationDropdownOpen(false);
                 }}
               >
                 {location}
@@ -119,9 +120,9 @@ const LocationInputWithDropdown = () => {
             top: "50%",
             transform: "translateY(-50%)",
             color: "#888",
-            cursor: "pointer", 
+            cursor: "pointer",
           }}
-          onClick={toggleStatusDropdown} 
+          onClick={toggleStatusDropdown}
         />
         {/* Status input field */}
         <input
@@ -160,7 +161,7 @@ const LocationInputWithDropdown = () => {
                 }}
                 onClick={() => {
                   alert(`You selected: ${status}`);
-                  setStatusDropdownOpen(false); 
+                  setStatusDropdownOpen(false);
                 }}
               >
                 {status}

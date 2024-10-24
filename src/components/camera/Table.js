@@ -41,7 +41,7 @@ const Table = () => {
               borderCollapse: "collapse",
             }}
           >
-            <thead>
+            <thead style={{ color: "gray" }}>
               <tr>
                 <td style={{ padding: "10px", textAlign: "left" }}>
                   <input type="checkbox" />
@@ -52,7 +52,7 @@ const Table = () => {
                     textAlign: "left",
                   }}
                 >
-                  Name
+                  NAME
                 </th>
                 <th
                   style={{
@@ -111,7 +111,7 @@ const Table = () => {
             ))}
           </table>
           <div className="pagination">
-            <div>^ {totalPages}</div>
+            {/* <div>^ {totalPages}</div> */}
             <p>
               {startIndex + 1}-{Math.min(endIndex, cameraData.length)} of{" "}
               {cameraData.length}
