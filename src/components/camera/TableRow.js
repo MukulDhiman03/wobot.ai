@@ -3,12 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import { BASE_URL } from "../../utils/constants";
+import { BASE_URL, token } from "../../utils/constants";
 import { CameraContext } from "../../App";
 
 const TableRow = ({ cam }) => {
-  const token = "4ApVMIn5sTxeW7GQ5VWeWiy";
-  const { cameraData, setCameraData } = useContext(CameraContext);
+  const { setCameraData } = useContext(CameraContext);
 
   const statusHandler = async (status, id) => {
     try {
@@ -30,7 +29,7 @@ const TableRow = ({ cam }) => {
         )
       );
     } catch (err) {
-      // console.log(err);s
+      alert(err.message);
     }
   };
   return (
@@ -55,7 +54,7 @@ const TableRow = ({ cam }) => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          <div>☁️</div>
+          {/* <div>☁️</div> */}
           <div
             style={{
               display: "flex",

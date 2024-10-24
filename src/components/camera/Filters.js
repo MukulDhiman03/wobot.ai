@@ -14,10 +14,9 @@ const LocationInputWithDropdown = () => {
 
   const statuses = ["Active", "Inactive"];
 
-  const { cameraData, setCameraData, filteredData, setFilteredData } =
-    useContext(CameraContext);
-  // console.log(cameraData);
+  const { cameraData, setFilteredData } = useContext(CameraContext);
 
+  // to filter the data according to the location filter
   const handleCurrentLocation = (location) => {
     if (location) {
       setCurrentLocation(location);
@@ -28,7 +27,7 @@ const LocationInputWithDropdown = () => {
     }
   };
 
-  // Filter by status
+  // to filter the data according to the status filter
   const handleCurrentStatus = (status) => {
     if (status) {
       setCurrentStatus(status);
@@ -39,20 +38,22 @@ const LocationInputWithDropdown = () => {
     }
   };
 
+  // toggle to open and close the location drop down
   const toggleLocationDropdown = () => {
     setLocationDropdownOpen(!isLocationDropdownOpen);
     setStatusDropdownOpen(false);
   };
 
+  // toggle to open and close the status drop down
   const toggleStatusDropdown = () => {
     setStatusDropdownOpen(!isStatusDropdownOpen);
     setLocationDropdownOpen(false);
   };
 
   return (
-    <div style={{ display: "flex", position: "relative", marginTop: "2vh" }}>
+    <div className="filter_container">
       {/* Location input field with dropdown */}
-      <div style={{ width: "15vw", position: "relative", marginRight: "15px" }}>
+      <div className="location_container">
         {/* Location icon on the left side */}
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
@@ -79,35 +80,14 @@ const LocationInputWithDropdown = () => {
         />
         {/* Location input field */}
         <input
+          className="location_input"
           type="text"
           placeholder="Location"
           value={currentLocation}
-          style={{
-            paddingLeft: "35px",
-            paddingRight: "35px",
-            height: "35px",
-            width: "100%",
-          }}
         />
         {/* Location dropdown list */}
         {isLocationDropdownOpen && (
-          <ul
-            style={{
-              position: "absolute",
-              overflowY: "scroll",
-              top: "40px",
-              left: "0",
-              width: "100%",
-              height: "30vh",
-              backgroundColor: "white",
-              border: "1px solid #ccc",
-              listStyleType: "none",
-              padding: "10px 0",
-              margin: "0",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              zIndex: 10,
-            }}
-          >
+          <ul className="location_dropdown">
             {cameraData.map((cam, index) => (
               <li
                 key={index}
@@ -128,7 +108,7 @@ const LocationInputWithDropdown = () => {
       </div>
 
       {/* Status input field with dropdown */}
-      <div style={{ width: "10vw", position: "relative" }}>
+      <div className="status_container">
         {/* Location icon on the left side */}
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
@@ -155,33 +135,14 @@ const LocationInputWithDropdown = () => {
         />
         {/* Status input field */}
         <input
+          className="status_input"
           value={currenStatus}
           type="text"
           placeholder="Status"
-          style={{
-            paddingLeft: "35px",
-            paddingRight: "35px",
-            height: "35px",
-            width: "100%",
-          }}
         />
         {/* Status dropdown list */}
         {isStatusDropdownOpen && (
-          <ul
-            style={{
-              position: "absolute",
-              top: "40px",
-              left: "0",
-              width: "100%",
-              backgroundColor: "white",
-              border: "1px solid #ccc",
-              listStyleType: "none",
-              padding: "10px 0",
-              margin: "0",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              zIndex: 10,
-            }}
-          >
+          <ul className="status_dropdown">
             {statuses.map((status, index) => (
               <li
                 key={index}

@@ -4,8 +4,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { CameraContext } from "../../App";
 
 const TableHeader = () => {
-  const { cameraData, filteredData, setFilteredData } =
-    useContext(CameraContext);
+  const { cameraData, setFilteredData } = useContext(CameraContext);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
