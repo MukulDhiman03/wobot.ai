@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CameraContext } from "../../App";
 import TableRow from "./TableRow";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 import TableShimmer from "../shimmerui/TableShimmer";
 const Table = () => {
-  const { filteredData, setFilteredData } = useContext(CameraContext);
+  const { filteredData } = useContext(CameraContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -71,7 +70,7 @@ const Table = () => {
             </tbody>
           ))}
         </table>
-        {/* pagination */}
+        {/* pagination for table */}
         {filteredData.length > 0 && (
           <div className="pagination">
             <p>

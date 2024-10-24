@@ -35,6 +35,7 @@ Once the app is running, you'll be presented with a camera list table featuring:
 - Pagination Controls: Use the "<" and ">" buttons to navigate between pages.
 - Search Bar: Enter a search term to filter the list of cameras by name.
 - Filters: Apply available filters to narrow down the list based on location and status.
+- Shimmer ui: A popular design pattern used to improve the user experience during content loading. Instead of showing a blank screen or a static loader (like a spinner), a shimmer effect shows a visual placeholder for the content that is still being loaded. It gives users a sense of progress and makes the interface feel more dynamic and responsive.
 
 # Technologies Used
 

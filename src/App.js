@@ -1,15 +1,17 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import CameraTable from "./components/camera/CameraTable";
 import "./App.css";
 import axios from "axios";
 import { BASE_URL, token } from "./utils/constants";
 
+// created an context for handling states
 export const CameraContext = createContext(null);
 
 const App = () => {
   const [cameraData, setCameraData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
+  // function to fetcht the camera data
   const fetchCameraData = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/fetch/cameras`, {
