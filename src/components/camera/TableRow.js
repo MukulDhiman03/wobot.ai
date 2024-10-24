@@ -30,7 +30,7 @@ const TableRow = ({ cam }) => {
         )
       );
     } catch (err) {
-      console.log(err);
+      // console.log(err);s
     }
   };
   return (

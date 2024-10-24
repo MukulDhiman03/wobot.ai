@@ -3,16 +3,16 @@ import { CameraContext } from "../../App";
 import TableRow from "./TableRow";
 
 const Table = () => {
-  const { cameraData } = useContext(CameraContext);
+  const { filteredData, setFilteredData } = useContext(CameraContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const itemsPerPage = 10;
-  const totalPages = Math.ceil(cameraData.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentItems = cameraData.slice(startIndex, endIndex);
+  const currentItems = filteredData.slice(startIndex, endIndex);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -113,8 +113,8 @@ const Table = () => {
           <div className="pagination">
             {/* <div>^ {totalPages}</div> */}
             <p>
-              {startIndex + 1}-{Math.min(endIndex, cameraData.length)} of{" "}
-              {cameraData.length}
+              {startIndex + 1}-{Math.min(endIndex, filteredData.length)} of{" "}
+              {filteredData.length}
             </p>
             <div onClick={handlePrevPage} style={{ cursor: "pointer" }}>
               {"<<"}

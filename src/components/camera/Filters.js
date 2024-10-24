@@ -1,17 +1,35 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { CameraContext } from "../../App";
 
 const LocationInputWithDropdown = () => {
   const [isLocationDropdownOpen, setLocationDropdownOpen] = useState(false);
   const [isStatusDropdownOpen, setStatusDropdownOpen] = useState(false);
+  const [currentLocation, setCurrentLocation] = useState("");
+  const [currenStatus, setCurrentStatus] = useState("");
 
-  const locations = ["New York", "Los Angeles", "Chicago", "San Francisco"];
-  const statuses = ["Active", "Inactive", "Pending", "Completed"];
-  const { cameraData, setCameraData } = useContext(createContext);
+  const statuses = ["Active", "Inactive"];
+
+  const { cameraData, setCameraData, filteredData, setFilteredData } =
+    useContext(CameraContext);
+  console.log(cameraData);
+
+  const handleCurrentLocation = (location) => {
+    const filterData = cameraData.filter(
+      (camera) => camera.location === location
+    );
+    setFilteredData(filterData);
+  };
+
+  // Filter by status
+  const handleCurrentStatus = (status) => {
+    const filterData = cameraData.filter((camera) => camera.status === status);
+    setFilteredData(filterData);
+  };
 
   const toggleLocationDropdown = () => {
     setLocationDropdownOpen(!isLocationDropdownOpen);
@@ -55,6 +73,7 @@ const LocationInputWithDropdown = () => {
         <input
           type="text"
           placeholder="Location"
+          value={currentLocation}
           style={{
             paddingLeft: "35px",
             paddingRight: "35px",
@@ -67,9 +86,11 @@ const LocationInputWithDropdown = () => {
           <ul
             style={{
               position: "absolute",
+              overflowY: "scroll",
               top: "40px",
               left: "0",
               width: "100%",
+              height: "30vh",
               backgroundColor: "white",
               border: "1px solid #ccc",
               listStyleType: "none",
@@ -79,7 +100,7 @@ const LocationInputWithDropdown = () => {
               zIndex: 10,
             }}
           >
-            {locations.map((location, index) => (
+            {cameraData.map((cam, index) => (
               <li
                 key={index}
                 style={{
@@ -87,11 +108,11 @@ const LocationInputWithDropdown = () => {
                   cursor: "pointer",
                 }}
                 onClick={() => {
-                  alert(`You selected: ${location}`);
+                  handleCurrentLocation(cam.location);
                   setLocationDropdownOpen(false);
                 }}
               >
-                {location}
+                {cam.location}
               </li>
             ))}
           </ul>
@@ -160,7 +181,7 @@ const LocationInputWithDropdown = () => {
                   cursor: "pointer",
                 }}
                 onClick={() => {
-                  alert(`You selected: ${status}`);
+                  handleCurrentStatus(status);
                   setStatusDropdownOpen(false);
                 }}
               >

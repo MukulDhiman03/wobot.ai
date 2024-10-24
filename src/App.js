@@ -9,6 +9,7 @@ export const CameraContext = createContext(null);
 
 const App = () => {
   const [cameraData, setCameraData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const fetchCameraData = async () => {
     const res = await axios.get(BASE_URL + "/fetch/cameras", {
@@ -17,13 +18,14 @@ const App = () => {
       },
     });
     setCameraData(res?.data?.data);
+    setFilteredData(res?.data?.data);
   };
   useEffect(() => {
     fetchCameraData();
   }, []);
 
   return (
-    <CameraContext.Provider value={{ cameraData, setCameraData }}>
+    <CameraContext.Provider value={{ cameraData, setCameraData,filteredData,setFilteredData }}>
       <CameraTable />
     </CameraContext.Provider>
   );
