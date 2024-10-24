@@ -1,5 +1,14 @@
 # Camera List Table
 
+Getting Started
+Follow the instructions below to get a copy of the project running on your local machine.
+
+Prerequisites
+Make sure you have the following installed on your local environment:
+
+- Node.js: Download Node.js
+- npm: Comes bundled with Node.js or Install npm
+
 Clone the repo,
 
 ### `git clone https://github.com/MukulDhiman03/wobot.ai.git`
@@ -19,16 +28,31 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-
 ## Features
+
 Once the app is running, you'll be presented with a camera list table featuring:
 
-- Pagination Controls: Use the "Next" and "Previous" buttons to navigate between pages.
-- Search Bar: Enter a search term to filter the list of cameras by name or model.
-- Filters: Apply available filters to narrow down the list based on specific camera attributes.
+- Pagination Controls: Use the "<" and ">" buttons to navigate between pages.
+- Search Bar: Enter a search term to filter the list of cameras by name.
+- Filters: Apply available filters to narrow down the list based on location and status.
 
 # Technologies Used
+
 - React.js: Frontend framework for building the user interface.
 - Axios : For making API requests to fetch camera data.
 - CSS: For styling the table and ensuring responsive design.
 - React Hooks: Used for managing state (e.g., search term, pagination, filters).
+
+### Project Structure
+
+- src
+  - components
+    - camera
+      - CameraTable
+        - TableHeader
+        - Filters
+        - Table
+          - TableRow
+    - shimmerui
+      - TableShimmerUi
+- App.js
