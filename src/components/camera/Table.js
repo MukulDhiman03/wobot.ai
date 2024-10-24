@@ -44,7 +44,9 @@ const Table = () => {
   if (isLoading) return <TableShimmer />;
   if (filteredData.length === 0)
     return (
-      <h1 style={{ textAlign: "center", marginTop: "5vh" }}>Nothing to show</h1>
+      <h1 style={{ textAlign: "center", marginTop: "5vh" }}>
+        Nothing to show,chek your internet connection.
+      </h1>
     );
   return (
     <div className="table_container">

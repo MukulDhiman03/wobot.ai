@@ -1,5 +1,9 @@
 # Camera List Table
 
+Deployed on
+
+### https://wobot-ai-eight.vercel.app/
+
 Getting Started
 Follow the instructions below to get a copy of the project running on your local machine.
 
