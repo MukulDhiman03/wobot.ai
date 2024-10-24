@@ -19,16 +19,24 @@ const LocationInputWithDropdown = () => {
   // console.log(cameraData);
 
   const handleCurrentLocation = (location) => {
-    const filterData = cameraData.filter(
-      (camera) => camera.location === location
-    );
-    setFilteredData(filterData);
+    if (location) {
+      setCurrentLocation(location);
+      const filterData = cameraData.filter(
+        (camera) => camera.location === location
+      );
+      setFilteredData(filterData);
+    }
   };
 
   // Filter by status
   const handleCurrentStatus = (status) => {
-    const filterData = cameraData.filter((camera) => camera.status === status);
-    setFilteredData(filterData);
+    if (status) {
+      setCurrentStatus(status);
+      const filterData = cameraData.filter(
+        (camera) => camera.status === status
+      );
+      setFilteredData(filterData);
+    }
   };
 
   const toggleLocationDropdown = () => {
@@ -147,6 +155,7 @@ const LocationInputWithDropdown = () => {
         />
         {/* Status input field */}
         <input
+          value={currenStatus}
           type="text"
           placeholder="Status"
           style={{

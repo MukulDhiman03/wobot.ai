@@ -7,6 +7,8 @@ const Table = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const itemsPerPage = 10;
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
@@ -29,7 +31,7 @@ const Table = () => {
     setIsDropdownOpen(!isDropdownOpen);
     setIsDropdownOpen(false);
   };
-
+  // if (isLoading) return <TableShimmer />;
   return (
     <div style={{ marginTop: "10px" }}>
       <div>

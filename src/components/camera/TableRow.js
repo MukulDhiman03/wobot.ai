@@ -49,34 +49,45 @@ const TableRow = ({ cam }) => {
       </td>
       <td
         style={{
+          minWidth: "200px",
           display: "flex",
           gap: "20px",
         }}
       >
-        <span>
-          <span>☁️</span>
-          <span
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div>☁️</div>
+          <div
             style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minWidth: "30px",
+              minHeight: "30px",
               border: "2px solid red",
-              padding: "5px",
-              borderRadius: "30px",
+
+              borderRadius: "50%",
             }}
           >
             {cam?.health?.device}
-          </span>
-        </span>
-        <span>
-          <span>🏢</span>
-          <span
+          </div>
+        </div>
+        <div>
+          {/* <span>🏢</span> */}
+          <div
             style={{
-              border: "2px solid orange",
-              padding: "5px",
-              borderRadius: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minWidth: "30px",
+              minHeight: "30px",
+              border: "2px solid red",
+
+              borderRadius: "50%",
             }}
           >
             {cam?.health?.cloud}
-          </span>
-        </span>
+          </div>
+        </div>
       </td>
       <td style={{ padding: "10px", textAlign: "left" }}>{cam?.location}</td>
       <td style={{ padding: "10px", textAlign: "left" }}>
