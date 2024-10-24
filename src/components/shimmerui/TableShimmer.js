@@ -1,72 +1,84 @@
 import React from "react";
 
 const TableShimmer = () => {
-  return (
-    <tr>
-      <td style={{ padding: "10px", textAlign: "left" }}>
-        <input type="checkbox" />
-        <td style={{ padding: "10px", textAlign: "left" }}>
-          <div style={{ background: "gray" }}></div>
+  return Array(12)
+    .fill(0)
+    .map((_) => (
+      <tr>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-        <td
-          style={{
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <div style={{ background: "gray" }}></div>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-        <td
-          style={{
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <div style={{ background: "gray" }}></div>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-        <td
-          style={{
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <div style={{ background: "gray" }}></div>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-        <td
-          style={{
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <div style={{ background: "gray" }}></div>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-        <td
-          style={{
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <div style={{ background: "gray" }}></div>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-        <td
-          style={{
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <div style={{ background: "gray" }}></div>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-        <td
-          style={{
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <div style={{ background: "gray" }}></div>
+        <td style={{ padding: "12px", textAlign: "left" }}>
+          <div
+            style={{
+              background: "rgb(232, 223, 223)",
+              width: "11vw",
+              height: "4vh",
+            }}
+          ></div>
         </td>
-      </td>
-    </tr>
-  );
+      </tr>
+    ));
 };
 
 export default TableShimmer;

@@ -1,13 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CameraContext } from "../../App";
 import TableRow from "./TableRow";
-
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import TableShimmer from "../shimmerui/TableShimmer";
 const Table = () => {
   const { filteredData, setFilteredData } = useContext(CameraContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   const itemsPerPage = 10;
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
@@ -31,89 +42,38 @@ const Table = () => {
     setIsDropdownOpen(!isDropdownOpen);
     setIsDropdownOpen(false);
   };
-  // if (isLoading) return <TableShimmer />;
+  if (isLoading) return <TableShimmer />;
+  if (filteredData.length === 0)
+    return (
+      <h1 style={{ textAlign: "center", marginTop: "5vh" }}>Nothing to show</h1>
+    );
   return (
-    <div style={{ marginTop: "10px" }}>
+    <div className="table_container">
       <div>
-        <h2>Sample Table</h2>
-        <div style={{ padding: "14px" }}>
-          <table
-            style={{
-              width: "100%",
-              borderCollapse: "collapse",
-            }}
-          >
-            <thead style={{ color: "gray" }}>
-              <tr>
-                <td style={{ padding: "10px", textAlign: "left" }}>
-                  <input type="checkbox" />
-                </td>
-                <th
-                  style={{
-                    padding: "10px",
-                    textAlign: "left",
-                  }}
-                >
-                  NAME
-                </th>
-                <th
-                  style={{
-                    padding: "10px",
-                    textAlign: "left",
-                  }}
-                >
-                  HEALTH
-                </th>
-                <th
-                  style={{
-                    padding: "10px",
-                    textAlign: "left",
-                  }}
-                >
-                  LOCATION
-                </th>
-                <th
-                  style={{
-                    padding: "10px",
-                    textAlign: "left",
-                  }}
-                >
-                  RECORDER
-                </th>
-                <th
-                  style={{
-                    padding: "10px",
-                    textAlign: "left",
-                  }}
-                >
-                  TASKS
-                </th>
-                <th
-                  style={{
-                    padding: "10px",
-                    textAlign: "left",
-                  }}
-                >
-                  STATUS
-                </th>
-                <th
-                  style={{
-                    padding: "10px",
-                    textAlign: "left",
-                  }}
-                >
-                  ACTIONS
-                </th>
-              </tr>
-            </thead>
-            {currentItems.map((cam) => (
-              <tbody key={cam.id}>
-                <TableRow cam={cam} />
-              </tbody>
-            ))}
-          </table>
+        <table>
+          <thead>
+            <tr>
+              <td>
+                <input type="checkbox" />
+              </td>
+              <th>NAME</th>
+              <th>HEALTH</th>
+              <th>LOCATION</th>
+              <th>RECORDER</th>
+              <th>TASKS</th>
+              <th>STATUS</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          {currentItems.map((cam) => (
+            <tbody key={cam.id}>
+              <TableRow cam={cam} />
+            </tbody>
+          ))}
+        </table>
+        {/* pagination */}
+        {filteredData.length > 0 && (
           <div className="pagination">
-            {/* <div>^ {totalPages}</div> */}
             <p>
               {startIndex + 1}-{Math.min(endIndex, filteredData.length)} of{" "}
               {filteredData.length}
@@ -131,7 +91,7 @@ const Table = () => {
               {">>"}
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { CameraContext } from "../../App";
 
 const TableRow = ({ cam }) => {
   const { setCameraData } = useContext(CameraContext);
+  console.log(cam);
 
   const statusHandler = async (status, id) => {
     try {
@@ -32,6 +33,7 @@ const TableRow = ({ cam }) => {
       alert(err.message);
     }
   };
+
   return (
     <tr>
       <td style={{ padding: "10px", textAlign: "left" }}>
@@ -42,9 +44,6 @@ const TableRow = ({ cam }) => {
           {cam?.current_status === "Online" ? <span>🟢</span> : <span>🔴</span>}
           <span>{cam?.name}</span>
         </div>
-        {/* <span style={{ color: "gray", fontSize: "10px" }}>
-          sherwinwilliams@wobot.ai
-        </span> */}
       </td>
       <td
         style={{
