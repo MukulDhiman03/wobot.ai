@@ -1,0 +1,42 @@
+/* wobot logo */
+.logo {
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+}
+
+.left {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Input with search icon */
+.left input {
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    position: relative;
+    outline: none;
+}
+
+.search-icon-button {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.search-icon-button .fa-search {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.search-icon-button:hover .fa-search {
+    color: #000;
+}
