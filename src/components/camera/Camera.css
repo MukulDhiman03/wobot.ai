@@ -60,3 +60,17 @@
 .pagination div {
     cursor: pointer;
 }
+
+.cam_status_active {
+    color: rgb(77, 236, 77);
+    font-weight: bold;
+    background-color: rgb(237, 229, 229);
+    text-align: center;
+    width: 50%;
+}
+
+.cam_status_inactive {
+    background-color: rgb(237, 229, 229);
+    text-align: center;
+    width: 50%;
+}
