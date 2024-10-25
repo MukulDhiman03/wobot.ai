@@ -42,10 +42,8 @@ const TableRow = ({ cam }) => {
         <input type="checkbox" />
       </td>
       <td style={{ padding: "10px", textAlign: "left" }}>
-        <div>
-          {cam?.current_status === "Online" ? <span>🟢</span> : <span>🔴</span>}
-          <span>{cam?.name}</span>
-        </div>
+        {cam?.current_status === "Online" ? <span>🟢</span> : <span>🔴</span>}
+        <span style={{ marginLeft: "2px" }}>{cam?.name}</span>
       </td>
       <td
         style={{
