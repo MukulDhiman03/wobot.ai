@@ -1,10 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBan } from "@fortawesome/free-solid-svg-icons";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBan,
+  faCircleCheck,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { BASE_URL, token } from "../../utils/constants";
 import { CameraContext } from "../../App";
+import CircularChip from "./CircularChip";
 
 const TableRow = ({ cam }) => {
   const { setFilteredData } = useContext(CameraContext);
@@ -25,6 +29,13 @@ const TableRow = ({ cam }) => {
     } catch (err) {
       alert(err.message);
     }
+  };
+
+  const deleteHandler = (id) => {
+    if (!window.confirm("Are you sure you want to delete this camera?")) return;
+
+    // Remove the row on the frontend by updating the state
+    setFilteredData((prevData) => prevData.filter((cam) => cam.id !== id));
   };
 
   return (
@@ -52,13 +63,13 @@ const TableRow = ({ cam }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              minWidth: "30px",
-              minHeight: "30px",
-              border: "2px solid red",
-              borderRadius: "50%",
             }}
           >
-            {cam?.health?.device}
+            <CircularChip
+              letter={cam?.health?.device}
+              percentage={70}
+              color={cam?.current_status === "Online" ? "green" : "red"}
+            />
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -68,13 +79,13 @@ const TableRow = ({ cam }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              minWidth: "30px",
-              minHeight: "30px",
-              border: "2px solid red",
-              borderRadius: "50%",
             }}
           >
-            {cam?.health?.cloud}
+            <CircularChip
+              letter={cam?.health?.cloud}
+              percentage={70}
+              color={cam?.current_status === "Online" ? "green" : "red"}
+            />
           </div>
         </div>
       </td>
@@ -105,6 +116,15 @@ const TableRow = ({ cam }) => {
               <FontAwesomeIcon icon={faCircleCheck} />
             </div>
           )}
+        </div>
+      </td>
+      {/* Delete button with deleteHandler */}
+      <td>
+        <div
+          style={{ marginLeft: "40px", cursor: "pointer" }}
+          onClick={() => deleteHandler(cam?.id)}
+        >
+          <FontAwesomeIcon icon={faTrash} />
         </div>
       </td>
     </tr>

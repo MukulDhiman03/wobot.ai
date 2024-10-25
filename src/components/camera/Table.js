@@ -65,6 +65,7 @@ const Table = () => {
               <th>TASKS</th>
               <th>STATUS</th>
               <th>ACTIONS</th>
+              <th>DELETE</th>
             </tr>
           </thead>
           {currentItems.map((cam) => (
