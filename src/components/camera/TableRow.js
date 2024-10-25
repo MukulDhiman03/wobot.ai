@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
@@ -7,24 +7,17 @@ import { BASE_URL, token } from "../../utils/constants";
 import { CameraContext } from "../../App";
 
 const TableRow = ({ cam }) => {
-  const { setCameraData } = useContext(CameraContext);
-  console.log(cam);
+  const { setFilteredData } = useContext(CameraContext);
 
   const statusHandler = async (status, id) => {
     try {
       const res = await axios.put(
-        BASE_URL + "/update/camera/status",
-        {
-          id: id,
-          status: status,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `${BASE_URL}/update/camera/status`,
+        { id, status },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
-      setCameraData((prevData) =>
+
+      setFilteredData((prevData) =>
         prevData.map((cam) =>
           cam.id === id ? { ...cam, status: res.data.data.status } : cam
         )
@@ -47,13 +40,13 @@ const TableRow = ({ cam }) => {
       </td>
       <td
         style={{
-          minWidth: "200px",
+          minWidth: "50px",
           display: "flex",
           gap: "20px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          {/* <div>☁️</div> */}
+          <div>☁️</div>
           <div
             style={{
               display: "flex",
@@ -62,15 +55,14 @@ const TableRow = ({ cam }) => {
               minWidth: "30px",
               minHeight: "30px",
               border: "2px solid red",
-
               borderRadius: "50%",
             }}
           >
             {cam?.health?.device}
           </div>
         </div>
-        <div>
-          {/* <span>🏢</span> */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div>🏢</div>
           <div
             style={{
               display: "flex",
@@ -79,7 +71,6 @@ const TableRow = ({ cam }) => {
               minWidth: "30px",
               minHeight: "30px",
               border: "2px solid red",
-
               borderRadius: "50%",
             }}
           >
@@ -91,7 +82,7 @@ const TableRow = ({ cam }) => {
       <td style={{ padding: "10px", textAlign: "left" }}>
         {cam.recorder ? cam.recorder : "N/A"}
       </td>
-      <td style={{ padding: "10px", textAlign: "left" }}>{cam?.tasks}</td>
+      <td style={{ padding: "10px", textAlign: "left" }}>{cam?.tasks} Tasks</td>
       <td style={{ padding: "10px", textAlign: "left" }}>
         <div
           className={
@@ -104,12 +95,7 @@ const TableRow = ({ cam }) => {
         </div>
       </td>
       <td>
-        <div
-          style={{
-            // padding: "10px",
-            marginLeft: "40px",
-          }}
-        >
+        <div style={{ marginLeft: "40px" }}>
           {cam?.status === "Active" ? (
             <div onClick={() => statusHandler("Inactive", cam?.id)}>
               <FontAwesomeIcon icon={faBan} />

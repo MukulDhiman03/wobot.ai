@@ -66,17 +66,22 @@
 }
 
 .cam_status_active {
-    color: rgb(77, 236, 77);
+    color: #029262;
     font-weight: bold;
-    background-color: rgb(237, 229, 229);
+    border-radius: 5px;
+    background-color: #0292621A;
     text-align: center;
     width: 50%;
+    padding: 4px;
 }
 
 .cam_status_inactive {
-    background-color: rgb(237, 229, 229);
+    background-color: #f0f0f0;
+    color: #545454;
     text-align: center;
     width: 50%;
+    padding: 4px;
+    border-radius: 5px;
 }
 
 /* filters */
