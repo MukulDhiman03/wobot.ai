@@ -10,31 +10,34 @@ const LocationInputWithDropdown = () => {
   const [isLocationDropdownOpen, setLocationDropdownOpen] = useState(false);
   const [isStatusDropdownOpen, setStatusDropdownOpen] = useState(false);
   const [currentLocation, setCurrentLocation] = useState("");
-  const [currenStatus, setCurrentStatus] = useState("");
+  const [currentStatus, setCurrentStatus] = useState("");
 
   const statuses = ["Active", "Inactive"];
-
   const { cameraData, setFilteredData } = useContext(CameraContext);
 
   // to filter the data according to the location filter
   const handleCurrentLocation = (location) => {
+    setCurrentLocation(location || ""); // Set location or empty string for "All"
     if (location) {
-      setCurrentLocation(location);
       const filterData = cameraData.filter(
         (camera) => camera.location === location
       );
       setFilteredData(filterData);
+    } else {
+      setFilteredData(cameraData); // Show all data if location is empty
     }
   };
 
   // to filter the data according to the status filter
   const handleCurrentStatus = (status) => {
+    setCurrentStatus(status || ""); // Set status or empty string for "All"
     if (status) {
-      setCurrentStatus(status);
       const filterData = cameraData.filter(
         (camera) => camera.status === status
       );
       setFilteredData(filterData);
+    } else {
+      setFilteredData(cameraData); // Show all data if status is empty
     }
   };
 
@@ -44,7 +47,7 @@ const LocationInputWithDropdown = () => {
     setStatusDropdownOpen(false);
   };
 
-  // toggle to open and closue the status drop down
+  // toggle to open and close the status drop down
   const toggleStatusDropdown = () => {
     setStatusDropdownOpen(!isStatusDropdownOpen);
     setLocationDropdownOpen(false);
@@ -75,7 +78,6 @@ const LocationInputWithDropdown = () => {
             color: "#888",
             cursor: "pointer",
           }}
-          onClick={toggleLocationDropdown}
         />
 
         <input
@@ -83,10 +85,24 @@ const LocationInputWithDropdown = () => {
           type="text"
           placeholder="Location"
           value={currentLocation}
+          onClick={toggleLocationDropdown}
+          readOnly
         />
 
         {isLocationDropdownOpen && (
           <ul className="location_dropdown">
+            <li
+              style={{
+                padding: "8px 15px",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                handleCurrentLocation(""); // Pass empty string for "All"
+                setLocationDropdownOpen(false);
+              }}
+            >
+              All
+            </li>
             {cameraData.map((cam, index) => (
               <li
                 key={index}
@@ -128,17 +144,30 @@ const LocationInputWithDropdown = () => {
             color: "#888",
             cursor: "pointer",
           }}
-          onClick={toggleStatusDropdown}
         />
         <input
           className="status_input"
-          value={currenStatus}
+          value={currentStatus}
           type="text"
           placeholder="Status"
+          onClick={toggleStatusDropdown}
+          readOnly
         />
-     
+
         {isStatusDropdownOpen && (
           <ul className="status_dropdown">
+            <li
+              style={{
+                padding: "8px 15px",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                handleCurrentStatus(""); // Pass empty string for "All"
+                setStatusDropdownOpen(false);
+              }}
+            >
+              All
+            </li>
             {statuses.map((status, index) => (
               <li
                 key={index}

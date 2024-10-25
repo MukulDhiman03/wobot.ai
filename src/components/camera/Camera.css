@@ -63,6 +63,8 @@
     display: flex;
     justify-content: flex-end;
     gap: 20px;
+    margin-top: 15px;
+    color: gray;
 
 }
 
@@ -76,7 +78,7 @@
     border-radius: 5px;
     background-color: #0292621A;
     text-align: center;
-    width: 50%;
+    width: 55%;
     padding: 4px;
 }
 
@@ -131,7 +133,7 @@
     outline: none;
     border: none;
     border: 1px solid #ccc;
-
+    cursor: pointer;
 }
 
 
@@ -150,6 +152,7 @@
     outline: none;
     border: none;
     border: 1px solid #ccc;
+    cursor: pointer;
 
 }
 
