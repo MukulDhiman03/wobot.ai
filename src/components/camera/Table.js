@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CameraContext } from "../../App";
 import TableRow from "./TableRow";
 import TableShimmer from "../shimmerui/TableShimmer";
+import Pagination from "./Pagination";
 const Table = () => {
   const { filteredData } = useContext(CameraContext);
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,7 +46,7 @@ const Table = () => {
   if (filteredData.length === 0)
     return (
       <h1 style={{ textAlign: "center", marginTop: "5vh" }}>
-        Nothing to show,chek your internet connection.
+        Nothing to show, check your internet connection.
       </h1>
     );
   return (
@@ -74,24 +75,14 @@ const Table = () => {
         </table>
         {/* pagination for table */}
         {filteredData.length > 0 && (
-          <div className="pagination">
-            <p>
-              {startIndex + 1}-{Math.min(endIndex, filteredData.length)} of{" "}
-              {filteredData.length}
-            </p>
-            <div onClick={handlePrevPage} style={{ cursor: "pointer" }}>
-              {"<<"}
-            </div>
-            <div onClick={handlePrevPage} style={{ cursor: "pointer" }}>
-              {"<"}
-            </div>
-            <div onClick={handleNextPage} style={{ cursor: "pointer" }}>
-              {">"}
-            </div>
-            <div onClick={handleNextPage} style={{ cursor: "pointer" }}>
-              {">>"}
-            </div>
-          </div>
+          <Pagination
+            filteredData={filteredData}
+            startIndex={startIndex}
+            currentPage={currentPage}
+            endIndex={endIndex}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+          />
         )}
       </div>
     </div>
