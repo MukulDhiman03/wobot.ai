@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Features
 
-Once the app is running, you'll be presented with a camera list table featuring:
+Once the app is running, you'll be presented with a camera list table featuring , with proper comments in the code:
 
 - Pagination Controls: Use the "<" and ">" buttons to navigate between pages.
 - Search Bar: Enter a search term to filter the list of cameras by name.
