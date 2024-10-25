@@ -30,6 +30,11 @@
     position: relative;
 }
 
+.search_container+p {
+    margin-left: 1px;
+    color: gray;
+}
+
 /* search filter */
 .search-icon-button {
     position: absolute;
@@ -79,7 +84,7 @@
     background-color: #f0f0f0;
     color: #545454;
     text-align: center;
-    width: 50%;
+    width: 60%;
     padding: 4px;
     border-radius: 5px;
 }
@@ -93,11 +98,7 @@
     background-color: white;
 }
 
-@media only screen and (max-width: 768px) {
-    .filter_container {
-        display: block;
-    }
-}
+
 
 
 .location_container {
@@ -171,8 +172,26 @@
 .table_container {
     margin-top: 8px;
     background-color: white;
+    overflow-x: auto;
+
 
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+
+
 
 .table_container>div {
     padding: 14px
@@ -195,4 +214,58 @@
 .table_container thead tr th {
     padding: 10px;
     text-align: left;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .filter_container {
+        display: block;
+    }
+
+    .cam_status_inactive {
+        width: 100%;
+    }
+
+    .cam_status_active {
+        width: 100%;
+    }
+
+    .filter_container {
+        display: blck;
+        padding: 5px;
+    }
+
+    .location_container {
+        width: 80%;
+        position: relative;
+        margin: 15px;
+    }
+
+    .status_container {
+        width: 80%;
+        position: relative;
+        margin: 15px;
+    }
+
+    .search_container {
+        margin: 5px;
+    }
+
+
+
+    .search_input input {
+        width: 180px;
+    }
+
+    .search-icon-button {
+        right: 10px;
+        top: 50%;
+    }
+
+    .search_container+p {
+        margin-left: 5px;
+    }
+
+
 }
