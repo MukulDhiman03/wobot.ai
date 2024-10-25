@@ -5,7 +5,7 @@ const CircularChip = ({ letter, percentage = 70, color = "red" }) => {
   const size = 25;
   const radius = (size - borderWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const strokeOffset = circumference * (1 - (percentage || 0) / 100); // Default 0% if undefined
+  const strokeOffset = circumference * (1 - (percentage || 0) / 100); 
 
   return (
     <div
