@@ -1,0 +1,17 @@
+/* Styling for each table row in shimmer effect */
+.shimmer-row {
+    padding: 12px;
+}
+
+/* Styling for each table cell in shimmer effect */
+.shimmer-cell {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Styling for the gray shimmer box */
+.shimmer-box {
+    background: rgb(232, 223, 223);
+    width: 11vw;
+    height: 4vh;
+}

@@ -58,6 +58,7 @@ Once the app is running, you'll be presented with a camera list table featuring:
         - Filters
         - Table
           - TableRow
+        - Pagination
     - shimmerui
       - TableShimmerUi
 - App.js

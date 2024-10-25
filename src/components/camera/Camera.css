@@ -174,14 +174,17 @@
     background-color: white;
     overflow-x: auto;
 
-
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
+    color: #545454;
 }
+
+
+
 
 th,
 td {

@@ -6,7 +6,6 @@ import Pagination from "./Pagination";
 const Table = () => {
   const { filteredData } = useContext(CameraContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,15 +37,12 @@ const Table = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-    setIsDropdownOpen(false);
-  };
+
   if (isLoading) return <TableShimmer />;
   if (filteredData.length === 0)
     return (
       <h1 style={{ textAlign: "center", marginTop: "5vh" }}>
-        Nothing to show, check your internet connection.
+        Nothing to show.
       </h1>
     );
   return (
@@ -55,9 +51,7 @@ const Table = () => {
         <table>
           <thead>
             <tr>
-              <td>
-                <input type="checkbox" />
-              </td>
+              <td></td>
               <th>NAME</th>
               <th>HEALTH</th>
               <th>LOCATION</th>

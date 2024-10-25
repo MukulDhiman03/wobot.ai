@@ -33,8 +33,6 @@ const TableRow = ({ cam }) => {
 
   const deleteHandler = (id) => {
     if (!window.confirm("Are you sure you want to delete this camera?")) return;
-
-    // Remove the row on the frontend by updating the state
     setFilteredData((prevData) => prevData.filter((cam) => cam.id !== id));
   };
 
@@ -118,7 +116,6 @@ const TableRow = ({ cam }) => {
           )}
         </div>
       </td>
-      {/* Delete button with deleteHandler */}
       <td>
         <div
           style={{ marginLeft: "40px", cursor: "pointer" }}

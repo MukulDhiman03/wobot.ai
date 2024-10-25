@@ -44,7 +44,7 @@ const LocationInputWithDropdown = () => {
     setStatusDropdownOpen(false);
   };
 
-  // toggle to open and close the status drop down
+  // toggle to open and closue the status drop down
   const toggleStatusDropdown = () => {
     setStatusDropdownOpen(!isStatusDropdownOpen);
     setLocationDropdownOpen(false);
@@ -54,7 +54,6 @@ const LocationInputWithDropdown = () => {
     <div className="filter_container">
       {/* Location input field with dropdown */}
       <div className="location_container">
-        {/* Location icon on the left side */}
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
           style={{
@@ -65,7 +64,7 @@ const LocationInputWithDropdown = () => {
             color: "#888",
           }}
         />
-        {/* Dropdown icon on the right side */}
+
         <FontAwesomeIcon
           icon={faChevronDown}
           style={{
@@ -78,14 +77,14 @@ const LocationInputWithDropdown = () => {
           }}
           onClick={toggleLocationDropdown}
         />
-        {/* Location input field */}
+
         <input
           className="location_input"
           type="text"
           placeholder="Location"
           value={currentLocation}
         />
-        {/* Location dropdown list */}
+
         {isLocationDropdownOpen && (
           <ul className="location_dropdown">
             {cameraData.map((cam, index) => (
@@ -107,9 +106,7 @@ const LocationInputWithDropdown = () => {
         )}
       </div>
 
-      {/* Status input field with dropdown */}
       <div className="status_container">
-        {/* Location icon on the left side */}
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
           style={{
@@ -120,7 +117,7 @@ const LocationInputWithDropdown = () => {
             color: "#888",
           }}
         />
-        {/* Dropdown icon on the right side */}
+
         <FontAwesomeIcon
           icon={faChevronDown}
           style={{
@@ -133,14 +130,13 @@ const LocationInputWithDropdown = () => {
           }}
           onClick={toggleStatusDropdown}
         />
-        {/* Status input field */}
         <input
           className="status_input"
           value={currenStatus}
           type="text"
           placeholder="Status"
         />
-        {/* Status dropdown list */}
+     
         {isStatusDropdownOpen && (
           <ul className="status_dropdown">
             {statuses.map((status, index) => (
