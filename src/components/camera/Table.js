@@ -9,16 +9,18 @@ const Table = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  // shimmer ui logic
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
     };
   }, []);
 
+  // calculation of no of items , to be shown in screen according to pagination
   const itemsPerPage = 10;
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
@@ -62,6 +64,8 @@ const Table = () => {
               <th>DELETE</th>
             </tr>
           </thead>
+
+          {/* table row */}
           {currentItems.map((cam) => (
             <tbody key={cam.id}>
               <TableRow cam={cam} />

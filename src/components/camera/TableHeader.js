@@ -7,6 +7,7 @@ const TableHeader = () => {
   const { cameraData, setFilteredData } = useContext(CameraContext);
   const [searchInput, setSearchInput] = useState("");
 
+  // to filter the data according to the search input
   useEffect(() => {
     if (searchInput.trim() === "") {
       setFilteredData(cameraData);

@@ -17,27 +17,27 @@ const LocationInputWithDropdown = () => {
 
   // to filter the data according to the location filter
   const handleCurrentLocation = (location) => {
-    setCurrentLocation(location || ""); // Set location or empty string for "All"
+    setCurrentLocation(location || "");
     if (location) {
       const filterData = cameraData.filter(
         (camera) => camera.location === location
       );
       setFilteredData(filterData);
     } else {
-      setFilteredData(cameraData); // Show all data if location is empty
+      setFilteredData(cameraData);
     }
   };
 
   // to filter the data according to the status filter
   const handleCurrentStatus = (status) => {
-    setCurrentStatus(status || ""); // Set status or empty string for "All"
+    setCurrentStatus(status || "");
     if (status) {
       const filterData = cameraData.filter(
         (camera) => camera.status === status
       );
       setFilteredData(filterData);
     } else {
-      setFilteredData(cameraData); // Show all data if status is empty
+      setFilteredData(cameraData);
     }
   };
 
@@ -55,7 +55,7 @@ const LocationInputWithDropdown = () => {
 
   return (
     <div className="filter_container">
-      {/* Location input field with dropdown */}
+      {/* location drop down */}
       <div className="location_container">
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
@@ -97,7 +97,7 @@ const LocationInputWithDropdown = () => {
                 cursor: "pointer",
               }}
               onClick={() => {
-                handleCurrentLocation(""); // Pass empty string for "All"
+                handleCurrentLocation("");
                 setLocationDropdownOpen(false);
               }}
             >
@@ -122,6 +122,7 @@ const LocationInputWithDropdown = () => {
         )}
       </div>
 
+      {/* status drop down */}
       <div className="status_container">
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
@@ -162,7 +163,7 @@ const LocationInputWithDropdown = () => {
                 cursor: "pointer",
               }}
               onClick={() => {
-                handleCurrentStatus(""); // Pass empty string for "All"
+                handleCurrentStatus("");
                 setStatusDropdownOpen(false);
               }}
             >
