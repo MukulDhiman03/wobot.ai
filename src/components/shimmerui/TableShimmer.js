@@ -1,5 +1,5 @@
 import React from "react";
-import "./TableShimmer.css"; // Import the CSS file
+import "./TableShimmer.css"; 
 
 const TableShimmer = () => {
   return Array(10)
