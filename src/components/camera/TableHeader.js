@@ -20,6 +20,7 @@ const TableHeader = () => {
       setFilteredData(filtered);
     }
   }, [searchInput]);
+
   return (
     <div>
       <div className="search_container">

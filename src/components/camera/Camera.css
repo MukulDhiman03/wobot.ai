@@ -23,11 +23,11 @@
     position: relative;
     outline: none;
     background-color: #F3F3F4;
-    ;
+
 }
 
 .search_input {
-    position: relative;
+    position: relative
 }
 
 .search_container+p {
@@ -38,13 +38,9 @@
 /* search filter */
 .search-icon-button {
     position: absolute;
-    right: 10px;
-    top: 40%;
-    transform: translateY(-50%);
-    background: none;
+    right: 10%;
+    top: 25%;
     border: none;
-    cursor: pointer;
-    padding: 0;
 }
 
 /* search filter  icon*/
